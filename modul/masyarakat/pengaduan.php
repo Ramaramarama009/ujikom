@@ -1,12 +1,14 @@
 <?php
 session_start();
 require '../../config/functions.php';
-$_SESSION['aktif'] = 'pengaduan';
+$aktif = 'pengaduan';
 
 if (isset($_POST['submit'])) {
     if (pengaduan($_POST) > 0) {
-        echo 'ayam';
-        die();
+        echo '<script>
+        alert("Berhasil membuat pengaduan");
+        window.location="";
+        </script>';
     }
 }
 ?>

@@ -6,10 +6,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link<?= ($_SESSION['aktif'] == 'dashboard') ? ' active' : ''; ?>" aria-current="page" href="dashboard.php">Dashboard</a>
+                    <a class="nav-link<?= ($aktif == 'dashboard') ? ' active' : ''; ?>" aria-current="page" href="dashboard.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link<?= ($_SESSION['aktif'] == 'pengaduan') ? ' active' : ''; ?>" href="pengaduan.php">Tulis Pengaduan</a>
+                    <a class="nav-link<?= ($aktif == 'laporan') ? ' active' : ''; ?>" aria-current="page" href="laporan.php">Pengaduan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= ($aktif == 'pengaduan') ? ' active' : ''; ?>" href="pengaduan.php">Tulis Pengaduan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>

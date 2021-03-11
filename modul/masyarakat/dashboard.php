@@ -5,7 +5,7 @@ require '../../config/functions.php';
 if (!isset($_SESSION['nik'])) {
     header("location: login.php");
 }
-$_SESSION['aktif'] = 'dashboard';
+$aktif = 'dashboard';
 
 
 
@@ -30,11 +30,13 @@ $_SESSION['aktif'] = 'dashboard';
         <div class="row">
             <div class="col">
                 <div class="alert alert-info" role="alert">
-                    <h2 class="mb-5">Selamat Datang YTH <?= ucwords($_SESSION['nama']); ?></h2>
+                    <h2 class="mb-5">Selamat Datang <?= ucwords($_SESSION['nama']); ?></h2>
+                    <p>Di Aplikasi Pengduan Masyarakat</p>
                     <p>Fitur Masyarakat :</p>
                     <ul>
                         <li>Login</li>
                         <li>Registrasi</li>
+                        <li>Melihat Laporan Pengaduan</li>
                         <li>Menulis Pengaduan</li>
                         <li>Logout</li>
                     </ul>

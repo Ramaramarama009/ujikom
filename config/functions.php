@@ -7,6 +7,20 @@ $dbname = 'ujikom';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
+function login($data)
+{   //Login Petugas && Admin
+    global $conn;
+    $username = $data['username'];
+    $password = $data['password'];
+    $sql = mysqli_query($conn, "SELECT * FROM petugas WHERE username='$username' AND password='$password'");
+    $row = mysqli_fetch_assoc($sql);
+    if (mysqli_num_rows($sql) > 0) {
+        return $row['level'];
+    } else {
+        return '0';
+    }
+}
+
 function login1($data)
 {
     //Login Masyarakat
@@ -34,7 +48,7 @@ function pengaduan($data)
     $foto = upImg();
 
     if (!$foto) {
-        die();
+        return false;
     }
     $sql = mysqli_query($conn, "INSERT INTO pengaduan VALUES ('','$tgl','$nik','$laporan','$foto','0')");
 
@@ -79,4 +93,38 @@ function upImg()
     move_uploaded_file($tmpName, '../../assets/image/' . $newNameImg);
 
     return $newNameImg;
+}
+
+function create1($data)
+{
+    global $conn;
+    $nik = $data['nik'];
+    $nama = $data['nama'];
+    $username = $data['username'];
+    $password = $data['password'];
+    $telp = $data['telp'];
+
+    $sql = mysqli_query($conn, "INSERT INTO masyarakat VALUES('','$nik','$nama','$username','$password','$telp','Non Aktif')");
+
+    return mysqli_affected_rows($conn);
+}
+
+
+function Laporan($data = false)
+{
+    global $conn;
+
+    if ($data == false) {
+        $sql = mysqli_query($conn, "SELECT * FROM pengaduan");
+    } else {
+        $sql = mysqli_query($conn, "SELECT * FROM pengaduan WHERE tgl_pengaduan='$data'");
+    }
+    return [mysqli_fetch_assoc($sql)];
+}
+function getId($data)
+{
+    global $conn;
+    $sql = mysqli_query($conn, "SELECT * FROM petugas WHERE username='$data'");
+    $row = mysqli_fetch_assoc($sql);
+    return $row['id_petugas'];
 }

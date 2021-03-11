@@ -1,24 +1,15 @@
 <?php
 require '../../config/functions.php';
 
-
 if (isset($_POST['submit'])) {
-    if (login1($_POST) == 'Aktif') {
-        session_start();
-        $_SESSION['nik'] = $_POST['nik'];
-        $_SESSION['nama'] = $_POST['nama'];
+    if (create1($_POST) > 0) {
         echo '<script>
-        alert("Selamat Datang ' . ucwords($_POST['nama']) . '");
-        window.location="dashboard.php";
-        </script>';
-    } elseif (login1($_POST) == 'Non Aktif') {
-        echo '<script>
-        alert("Akun Anda belum aktif silahkan hubungi admin");
-        window.location="";
+        alert("Berhasil membuat akun");
+        window.location="login.php";
         </script>';
     } else {
         echo '<script>
-        alert("Periksa data anda atau registrasi terlebih dahulu");
+        alert("gagal membuat akun");
         window.location="";
         </script>';
     }
@@ -34,7 +25,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <title>Login - Masyarakat</title>
+    <title>Register - Masyarakat</title>
 </head>
 
 <body>
@@ -42,7 +33,7 @@ if (isset($_POST['submit'])) {
         <div class="row mt-5">
             <div class="col d-flex justify-content-center">
                 <div class="card shadow" style="width: 25rem;">
-                    <h5 class="list-group-item list-group-item-primary text-center">Login - Masyarakat</h5>
+                    <h5 class="list-group-item list-group-item-primary text-center">Register - Masyarakat</h5>
                     <div class="card-body list-group-item list-group-item-success">
                         <form action="" method="POST">
                             <div class="mb-3">
@@ -62,10 +53,14 @@ if (isset($_POST['submit'])) {
                                 <input class="form-control" id="password" name="password" type="password" placeholder="Input Password Kamu..">
                             </div>
                             <div class="mb-3">
-                                <input type="submit" name="submit" value="Login" class="btn btn-primary col-sm-12">
+                                <label for="telp" class="form-label">No. Telp</label>
+                                <input class="form-control" id="telp" name="telp" type="text" placeholder="Input Nomor Kamu..">
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" name="submit" value="Create" class="btn btn-primary col-sm-12">
                             </div>
                             <div class="mb-3 text-center">
-                                <a href="register.php" class="text-decoration-none">Dont have a account? Click this</a>
+                                Already have an account?<a href="login.php" class="text-decoration-none">Click this to Sign in</a>
                             </div>
                         </form>
                     </div>
