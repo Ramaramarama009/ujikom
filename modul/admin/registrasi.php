@@ -1,7 +1,25 @@
 <?php
-
+session_start();
+include '../../config/functions.php';
+if (!isset($_SESSION['id'])) {
+    header("location:login.php");
+}
 
 $aktif = 'registrasi';
+
+if (isset($_POST['regis'])) {
+    if (create($_POST) > 0) {
+        echo '<script>
+        alert("Berhasil registrasi petugas");
+        window.location="";
+        </script>';
+    } else {
+        echo '<script>
+        alert("Registrasi tidak berhasil");
+        window.location="";
+        </script>';
+    }
+}
 
 
 ?>
@@ -18,7 +36,7 @@ $aktif = 'registrasi';
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-primary mb-3">
+    <nav class="navbar navbar-dark mb-3" style="background-color: #1cc88a;">
         <!-- Navbar content -->
     </nav>
     <div class="container-fluid">
@@ -26,8 +44,8 @@ $aktif = 'registrasi';
             <?php include 'template/navside.php'; ?>
             <div class="col-lg-10">
                 <div class="card">
-                    <h5 class="text-center list-group-item list-group-item-action list-group-item-primary">Form - Registrasi</h5>
-                    <form action="">
+                    <h5 class="text-center list-group-item list-group-item-primary">Form - Registrasi</h5>
+                    <form action="" method="POST">
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="nama">Nama</label>

@@ -7,19 +7,6 @@ $dbname = 'ujikom';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-function login($data)
-{   //Login Petugas && Admin
-    global $conn;
-    $username = $data['username'];
-    $password = $data['password'];
-    $sql = mysqli_query($conn, "SELECT * FROM petugas WHERE username='$username' AND password='$password'");
-    $row = mysqli_fetch_assoc($sql);
-    if (mysqli_num_rows($sql) > 0) {
-        return $row['level'];
-    } else {
-        return '0';
-    }
-}
 
 function login1($data)
 {
@@ -34,6 +21,20 @@ function login1($data)
     $row = mysqli_fetch_assoc($sql);
     if (mysqli_num_rows($sql) > 0) {
         return $row['status'];
+    } else {
+        return '0';
+    }
+}
+
+function login2($data)
+{   //Login Petugas && Admin
+    global $conn;
+    $username = $data['username'];
+    $password = $data['password'];
+    $sql = mysqli_query($conn, "SELECT * FROM petugas WHERE username='$username' AND password='$password'");
+    $row = mysqli_fetch_assoc($sql);
+    if (mysqli_num_rows($sql) > 0) {
+        return $row['level'];
     } else {
         return '0';
     }
@@ -95,31 +96,36 @@ function upImg()
     return $newNameImg;
 }
 
-function create1($data)
+function create($data)
 {
     global $conn;
-    $nik = $data['nik'];
+
     $nama = $data['nama'];
     $username = $data['username'];
     $password = $data['password'];
     $telp = $data['telp'];
 
-    $sql = mysqli_query($conn, "INSERT INTO masyarakat VALUES('','$nik','$nama','$username','$password','$telp','Non Aktif')");
+    if (isset($data['nik'])) {
+        $nik = $data['nik'];
+        $sql = mysqli_query($conn, "INSERT INTO masyarakat VALUES('','$nik','$nama','$username','$password','$telp','Non Aktif')");
+    } else {
+        $sql = mysqli_query($conn, "INSERT INTO petugas VALUES('','$nama','$username','$password','$telp','petugas')");
+    }
 
     return mysqli_affected_rows($conn);
 }
 
 
-function Laporan($data = false)
+
+
+function show($data)
 {
     global $conn;
-
-    if ($data == false) {
-        $sql = mysqli_query($conn, "SELECT * FROM pengaduan");
-    } else {
-        $sql = mysqli_query($conn, "SELECT * FROM pengaduan WHERE tgl_pengaduan='$data'");
+    $sql = mysqli_query($conn, "SELECT * FROM $data");
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $rows[] = $row;
     }
-    return [mysqli_fetch_assoc($sql)];
+    return $rows;
 }
 function getId($data)
 {

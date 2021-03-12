@@ -2,7 +2,7 @@
 require '../../config/functions.php';
 
 if (isset($_POST['submit'])) {
-    if (create1($_POST) > 0) {
+    if (create($_POST) > 0) {
         echo '<script>
         alert("Berhasil membuat akun");
         window.location="login.php";

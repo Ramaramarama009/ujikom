@@ -17,8 +17,8 @@
 
                 <div class="list-group" style="width: 25rem;">
                     <h5 class="list-group-item list-group-item-success">Choose Your Login </h5>
-                    <a href="" class="list-group-item list-group-item-primary">Administrator</a>
-                    <a href="modul/masyarakat/login.php" class="list-group-item list-group-item-info">Masyarakat</a>
+                    <a href="modul/admin/dashboard.php" class="list-group-item list-group-item-action list-group-item-primary">Administrator</a>
+                    <a href="modul/masyarakat/dashboard.php" class="list-group-item list-group-item-action list-group-item-info">Masyarakat</a>
 
                 </div>
             </div>

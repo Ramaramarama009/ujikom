@@ -2,16 +2,20 @@
 include '../../config/functions.php';
 
 if (isset($_POST['login'])) {
-    if (login($_POST) == 'admin') {
+    if (login2($_POST) == 'admin') {
+        session_start();
         $_SESSION['id'] = getId($_POST['username']);
+        $_SESSION['login'] = 'Admin';
         echo '<script>
         alert("Selamat Datang Admin");
         window.location="dashboard.php";
         </script>';
-    } elseif (login($_POST) == 'petugas') {
+    } elseif (login2($_POST) == 'petugas') {
+        session_start();
         $_SESSION['id'] = getId($_POST['username']);
+        $_SESSION['login'] = 'Petugas';
         echo '<script>
-        alert("Selamat Datang petugas");
+        alert("Selamat Datang Petugas");
         window.location="dashboard.php";
         </script>';
     } else {

@@ -1,9 +1,12 @@
 <?php
+session_start();
 require '../../config/functions.php';
-// if (!isset($_SESSION['id'])) {
-//     header("location:login.php");
-// }
+if (!isset($_SESSION['id'])) {
+    header("location:login.php");
+}
 $aktif = 'dashboard';
+
+
 
 ?>
 
@@ -21,24 +24,26 @@ $aktif = 'dashboard';
 
 <body>
 
-    <nav class="navbar navbar-dark bg-primary mb-3">
+    <nav class="navbar navbar-dark mb-3" style="background-color: #1cc88a;">
         <!-- Navbar content -->
     </nav>
     <div class="container-fluid">
         <div class="row">
             <?php include 'template/navside.php'; ?>
             <div class="col-lg-10">
-                <div class="alert alert-primary" role="alert">
-                    <h5>Selamat Datang Admin</h5><br>
+                <div class="alert alert-success" role="alert">
+                    <h5>Selamat Datang <?= $_SESSION['login']; ?></h5><br>
                     <p>Di Aplikasi Pengaduan Masyarakat</p>
-                    <p>Fitur Admin :</p>
+                    <p>Fitur <?= $_SESSION['login']; ?> :</p>
                     <ul>
                         <li>Login</li>
                         <li>Logout</li>
-                        <li>Registrasi</li>
                         <li>Verifikasi dan Validasi</li>
                         <li>Memberikan Tanggapan</li>
-                        <li>Generate Laporan to pdf</li>
+                        <?php if ($_SESSION['login'] == 'Admin') : ?>
+                            <li>Registrasi</li>
+                            <li>Generate Laporan to pdf</li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <?php
 require '../../config/functions.php';
 $aktif = 'laporan';
-$allData = Laporan();
+$show = show('pengaduan');
 $no = 1;
 ?>
 
@@ -35,7 +35,7 @@ $no = 1;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($allData as $row2) : ?>
+                        <?php foreach ($show as $row2) : ?>
                             <tr>
                                 <th scope="row"><?= $no; ?></th>
                                 <td><?= $row2['tgl_pengaduan']; ?></td>
