@@ -134,3 +134,16 @@ function getId($data)
     $row = mysqli_fetch_assoc($sql);
     return $row['id_petugas'];
 }
+
+function addTanggapan($data, $id)
+{
+    global $conn;
+    $tgl = date('y-m-d');
+    $tanggapan = $data['tanggapan'];
+
+    $id_petugas = $_SESSION['login'];
+
+    $sql = mysqli_query($conn, "INSERT INTO tanggapan VALUES ('','$id','$tgl','$tanggapan',''$id_petugas')");
+
+    return mysqli_affected_rows($conn);
+}

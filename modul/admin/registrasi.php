@@ -46,25 +46,28 @@ if (isset($_POST['regis'])) {
                 <div class="card">
                     <h5 class="text-center list-group-item list-group-item-primary">Form - Registrasi</h5>
                     <form action="" method="POST">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="nama">Nama</label>
-                                <input class="form-control" id="nama" name="nama" type="text" placeholder="Input Nama..">
-                            </div>
-                            <div class="mb-3">
-                                <label for="username">Username</label>
-                                <input class="form-control" id="username" name="username" type="text" placeholder="Input Nama..">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password">Password</label>
-                                <input class="form-control" id="password" name="password" type="password" placeholder="Input Nama..">
-                            </div>
-                            <div class="mb-3">
-                                <label for="telp">No. Telepon</label>
-                                <input class="form-control" id="telp" name="telp" type="text" placeholder="Input Nama..">
-                            </div>
-                            <div class="mb-3">
-                                <input type="submit" name="regis" value="Registrasi" class="btn btn-primary">
+                        <div class="card-body list-group-item list-group-item-danger">
+                            <div class="container-fluid">
+
+                                <div class="mb-3">
+                                    <label for="nama">Nama</label>
+                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Input Nama..">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" id="username" name="username" type="text" placeholder="Input Nama..">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Input Nama..">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telp">No. Telepon</label>
+                                    <input class="form-control" id="telp" name="telp" type="text" placeholder="Input Nama..">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" name="regis" value="Registrasi" class="btn btn-primary">
+                                </div>
                             </div>
                         </div>
                     </form>
