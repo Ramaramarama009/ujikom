@@ -56,7 +56,7 @@ $no = 1;
                                             <td>
                                                 <p class="px-2 mx-2 <?= $row['status'] == 'selesai' ? 'bg-success' : $row['status'] == 'proses' ? 'bg-warning' : 'bg-danger'; ?> rounded"><?= ucwords($row['status']); ?></p>
                                             </td>
-                                            <td><a href="addTanggapan.php?id=<?= $row['id_pengaduan']; ?>&status=<?= $row['status']; ?>" class="btn btn-info">Insert Tanggapan</a></td>
+                                            <td><a href="addTanggapan.php?id=<?= $row['id_pengaduan']; ?>&status=<?= $row['status']; ?>" class="btn btn-info">Tanggapan</a></td>
                                         </tr>
                                         <?php $no++ ?>
                                     <?php endforeach; ?>

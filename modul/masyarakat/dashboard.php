@@ -30,7 +30,7 @@ $aktif = 'dashboard';
         <div class="row">
             <div class="col">
                 <div class="alert alert-info" role="alert">
-                    <h2 class="mb-5">Selamat Datang <?= ucwords($_SESSION['nama']); ?></h2>
+                    <h2 class="mb-5">Selamat Datang <?= ucwords($_SESSION['username']); ?></h2>
                     <p>Di Aplikasi Pengduan Masyarakat</p>
                     <p>Fitur Masyarakat :</p>
                     <ul>

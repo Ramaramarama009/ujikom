@@ -6,9 +6,9 @@ if (isset($_POST['submit'])) {
     if (login1($_POST) == 'Aktif') {
         session_start();
         $_SESSION['nik'] = $_POST['nik'];
-        $_SESSION['nama'] = $_POST['nama'];
+        $_SESSION['username'] = $_POST['username'];
         echo '<script>
-        alert("Selamat Datang ' . ucwords($_POST['nama']) . '");
+        alert("Selamat Datang ' . ucwords($_POST['username']) . '");
         window.location="dashboard.php";
         </script>';
     } elseif (login1($_POST) == 'Non Aktif') {
@@ -48,10 +48,6 @@ if (isset($_POST['submit'])) {
                             <div class="mb-3">
                                 <label for="nik" class="form-label">NIK</label>
                                 <input class="form-control" id="nik" name="nik" type="text" placeholder="Input Nik Kamu..">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input class="form-control" id="nama" name="nama" type="text" placeholder="Input Nama Kamu..">
                             </div>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>

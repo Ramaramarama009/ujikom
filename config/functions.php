@@ -13,11 +13,10 @@ function login1($data)
     //Login Masyarakat
     global $conn;
     $nik = $data['nik'];
-    $nama = $data['nama'];
     $username = $data['username'];
     $password = $data['password'];
 
-    $sql = mysqli_query($conn, "SELECT * FROM masyarakat WHERE nik='$nik' AND nama='$nama' AND username='$username' AND password='$password'");
+    $sql = mysqli_query($conn, "SELECT * FROM masyarakat WHERE nik='$nik' AND username='$username' AND password='$password'");
     $row = mysqli_fetch_assoc($sql);
     if (mysqli_num_rows($sql) > 0) {
         return $row['status'];
