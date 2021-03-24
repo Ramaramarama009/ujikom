@@ -2,7 +2,9 @@
 session_start();
 require '../../config/functions.php';
 $aktif = 'pengaduan';
-
+if (!isset($_SESSION['nik'])) {
+    header("location: login.php");
+}
 if (isset($_POST['submit'])) {
     if (pengaduan($_POST) > 0) {
         echo '<script>
@@ -22,33 +24,42 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <?php include '../../config/header.php' ?>
     <title>Tulis Pengaduan - Masyarakat</title>
 </head>
 
 <body>
 
-    <?php include 'template/navbar.php'; ?>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col d-flex justify-content-center">
-                <div class="card shadow" style="width: 40rem;">
-                    <h5 class="list-group-item list-group-item-primary text-center">Form - Pengaduan</h5>
-                    <div class="card-body list-group-item list-group-item-danger">
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label for="pengaduan" class="form-label">Isi Laporan Pengaduan</label>
-                                <textarea class="form-control" id="pengaduan" rows="3" name="pengaduan"></textarea>
+    <div id="wrapper">
+        <?php include 'template/sidebar.php' ?>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+
+                <?php include 'template/navbar.php' ?>
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <div class="card shadow" style="width:100%;">
+                                <h5 class="list-group-item list-group-item-primary text-center">Form - Pengaduan</h5>
+                                <div class="card-body list-group-item list-group-item-danger">
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="pengaduan" class="form-label">Isi Laporan Pengaduan</label>
+                                            <textarea class="form-control" id="pengaduan" rows="6" name="pengaduan"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Input Foto</label>
+                                            <input class="custom-file" type="file" id="formFile" name="foto">
+                                        </div>
+                                        <div class="mb-3  d-flex justify-content-end">
+                                            <input type="submit" name="submit" class="btn btn-primary">
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Input Foto</label>
-                                <input class="form-control" type="file" id="formFile" name="foto">
-                            </div>
-                            <div class="mb-3  d-flex justify-content-center">
-                                <input type="submit" name="submit" class="btn btn-primary">
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

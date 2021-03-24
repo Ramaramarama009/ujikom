@@ -146,3 +146,15 @@ function addTanggapan($data, $id)
 
     return mysqli_affected_rows($conn);
 }
+function updateTanggapan($data, $id)
+{
+    global $conn;
+    $tgl = date('y-m-d');
+    $tanggapan = $data['tanggapan'];
+
+    $id_petugas = $_SESSION['login'];
+
+    $sql = mysqli_query($conn, "UPDATE tanggapan set tanggapan='$tanggapan', tgl_tanggapan='$tgl' WHERE id_pengaduan='$id'");
+
+    return mysqli_affected_rows($conn);
+}
